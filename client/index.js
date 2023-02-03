@@ -2,7 +2,7 @@
  * Copyright 2023 Marek Kobida
  */
 
-const getProjectorsElement = window.document.querySelector('#getProjectors');
+const getProductsElement = window.document.querySelector('#getProducts');
 const tableElement = window.document.querySelector('#table');
 
 function createTableRow(columns) {
@@ -15,7 +15,7 @@ function createTableRow(columns) {
   return newTableRow;
 }
 
-getProjectorsElement.addEventListener('click', async () => {
+getProductsElement.addEventListener('click', async () => {
   const response = await fetch('https://raw.githubusercontent.com/warden-sk/bazos/main/json/products.json');
 
   const json = await response.json();

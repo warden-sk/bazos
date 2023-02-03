@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "module": "CommonJS",
-    "outDir": "./ts",
+    "outDir": "./server",
     "strict": true,
     "target": "ESNext"
   }

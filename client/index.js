@@ -37,7 +37,9 @@ getProductsElement.addEventListener('click', async () => {
   createTableRow(['address', 'name', 'price']);
 
   json.forEach(product => {
-    const newTableRow = createTableRow([product.address[0], product.name, `${product.price} €`]);
+    const productPrice = product.price === -1 ? '\u2014' : `${product.price} €`;
+
+    const newTableRow = createTableRow([product.address[0], product.name, productPrice]);
 
     /**
      * Po kliknutí na riadok

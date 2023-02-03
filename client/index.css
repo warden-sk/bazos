@@ -10,6 +10,7 @@ body {
 }
 #getProducts {
   margin-bottom: 1rem;
+  text-align: center;
 }
 #getProducts:hover {
   cursor: pointer;

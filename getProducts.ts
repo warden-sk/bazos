@@ -44,11 +44,11 @@ async function getProducts(url: string, page: number): Promise<Product[]> {
       NameElement?.textContent &&
       PriceElement?.textContent
     ) {
-      const address = AddressElement.textContent;
       const [, day, month, year] =
         /\[([^.]+)\.([^.]+)\.([^\]]+)]/.exec(DateElement.textContent.replace(/\s+/g, '')) ?? [];
-      const description = DescriptionElement.textContent;
       const [id] = /\d{9}/.exec(NameElement.href) ?? [];
+      const address = AddressElement.textContent;
+      const description = DescriptionElement.textContent;
       const name = NameElement.textContent;
       const price = PriceElement.textContent;
 

@@ -8,7 +8,7 @@ import getPageCount from './getPageCount';
 import fs from 'fs';
 
 (async () => {
-  let productStorage: Product[] = JSON.parse(fs.readFileSync('./products.json').toString());
+  let productStorage: Product[] = JSON.parse(fs.readFileSync('./json/products.json').toString());
 
   productStorage = productStorage.map(product => {
     product.isActive = false;

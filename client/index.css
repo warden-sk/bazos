@@ -1,0 +1,45 @@
+/*
+ * Copyright 2023 Marek Kobida
+ */
+
+body {
+  background-color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 90%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 1rem;
+}
+#getProjectors {
+  margin-bottom: 1rem;
+}
+#getProjectors:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#table {
+  border-collapse: collapse;
+  text-align: right;
+  white-space: pre;
+  width: 100%;
+}
+#table tr:first-child {
+  background-color: hsl(0, 0%, 30%);
+  font-weight: 600;
+}
+#table tr:not(:first-child):hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#table tr:not(:first-child):nth-child(odd) {
+  background-color: hsl(0, 0%, 20%);
+}
+#table tr td {
+  padding: 0.5rem;
+}
+#table tr td:first-child {
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+#table tr td:last-child {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}

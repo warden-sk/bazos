@@ -37,7 +37,7 @@ let updateStorage: Update[] = [];
         const columnsToUpdate = ['address', 'date', 'description', 'name', 'price'] as const;
 
         columnsToUpdate.forEach(columnToUpdate => {
-          if (productStorage[i][columnToUpdate] !== product[columnToUpdate]) {
+          if (JSON.stringify(productStorage[i][columnToUpdate]) !== JSON.stringify(product[columnToUpdate])) {
             updateStorage = [
               ...updateStorage,
               {

@@ -7,6 +7,15 @@ import getProducts from './getProducts';
 import getPageCount from './getPageCount';
 import fs from 'fs';
 
+interface Update {
+  createdAt: number;
+  from: any;
+  id: number;
+  to: any;
+}
+
+let updateStorage: Update[] = [];
+
 (async () => {
   let productStorage: Product[] = JSON.parse(fs.readFileSync('./json/products.json').toString());
 
@@ -24,6 +33,22 @@ import fs from 'fs';
         console.error(`\x1b[31mProduct "${product.id}" exists at "${i}".\x1b[0m`);
 
         productStorage[i].isActive = true;
+
+        const columnsToUpdate = ['address', 'date', 'description', 'name', 'price'] as const;
+
+        columnsToUpdate.forEach(columnToUpdate => {
+          if (productStorage[i][columnToUpdate] !== product[columnToUpdate]) {
+            updateStorage = [
+              ...updateStorage,
+              {
+                createdAt: +new Date(),
+                from: productStorage[i][columnToUpdate],
+                id: product.id,
+                to: product[columnToUpdate],
+              },
+            ];
+          }
+        });
       } else {
         productStorage = [...productStorage, product];
       }
@@ -45,6 +70,7 @@ import fs from 'fs';
       console.log(`\x1b[32m${productStorage.length} product(s)\x1b[0m`);
 
       fs.writeFileSync('./json/products.json', JSON.stringify(productStorage));
+      fs.writeFileSync('./json/updates.json', JSON.stringify(updateStorage));
     }
   }
 

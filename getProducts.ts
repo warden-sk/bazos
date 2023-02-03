@@ -15,6 +15,7 @@ export interface Product {
   isActive: boolean;
   name: string;
   price: number;
+  updatedAt: number;
 }
 
 async function getProducts(url: string, page: number): Promise<Product[]> {
@@ -65,6 +66,7 @@ async function getProducts(url: string, page: number): Promise<Product[]> {
           isActive: true,
           name,
           price: toNumber(price),
+          updatedAt: -1,
         },
       ];
     }

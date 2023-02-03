@@ -39,13 +39,11 @@ getProductsElement.addEventListener('click', async () => {
   createTableRow(['address', 'date', 'name', 'price']);
 
   json.forEach(product => {
-    const productPrice = product.price === -1 ? '\u2014' : `${product.price} €`;
-
     const newTableRow = createTableRow([
       product.address[0],
-      new Date(product.date).toLocaleDateString('sk'),
+      new Date(product.date).toLocaleDateString(),
       product.name,
-      productPrice,
+      product.price === -1 ? '' : `${product.price} €`,
     ]);
 
     /**

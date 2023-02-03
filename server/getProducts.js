@@ -46,6 +46,7 @@ async function getProducts(url, page) {
                     isActive: true,
                     name,
                     price: (0, toNumber_1.default)(price),
+                    updatedAt: -1,
                 },
             ];
         }

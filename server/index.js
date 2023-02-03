@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const getProducts_1 = __importDefault(require("./getProducts"));
 const getPageCount_1 = __importDefault(require("./getPageCount"));
 const fs_1 = __importDefault(require("fs"));
+let updateStorage = [];
 (async () => {
     let productStorage = JSON.parse(fs_1.default.readFileSync('./json/products.json').toString());
     productStorage = productStorage.map(product => {
@@ -21,6 +22,20 @@ const fs_1 = __importDefault(require("fs"));
             if (i !== -1) {
                 console.error(`\x1b[31mProduct "${product.id}" exists at "${i}".\x1b[0m`);
                 productStorage[i].isActive = true;
+                const columnsToUpdate = ['address', 'date', 'description', 'name', 'price'];
+                columnsToUpdate.forEach(columnToUpdate => {
+                    if (productStorage[i][columnToUpdate] !== product[columnToUpdate]) {
+                        updateStorage = [
+                            ...updateStorage,
+                            {
+                                createdAt: +new Date(),
+                                from: productStorage[i][columnToUpdate],
+                                id: product.id,
+                                to: product[columnToUpdate],
+                            },
+                        ];
+                    }
+                });
             }
             else {
                 productStorage = [...productStorage, product];
@@ -38,6 +53,7 @@ const fs_1 = __importDefault(require("fs"));
         else {
             console.log(`\x1b[32m${productStorage.length} product(s)\x1b[0m`);
             fs_1.default.writeFileSync('./json/products.json', JSON.stringify(productStorage));
+            fs_1.default.writeFileSync('./json/updates.json', JSON.stringify(updateStorage));
         }
     }
     const pageCount = await (0, getPageCount_1.default)('https://elektro.bazos.sk/projektory');

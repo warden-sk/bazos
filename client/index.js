@@ -24,21 +24,21 @@ function createTableRow(columns) {
  * Po kliknutí na „Get products“
  */
 getProductsElement.addEventListener('click', async () => {
-  const response = await fetch('https://raw.githubusercontent.com/warden-sk/bazos/main/json/products.json');
+  const response1 = await fetch('https://raw.githubusercontent.com/warden-sk/bazos/main/json/products.json');
 
   /**
-   * json: Product[]
+   * productStorage: Product[]
    */
-  let json = await response.json();
+  let productStorage = await response1.json();
 
-  json = json.sort((l, r) => r.date - l.date);
+  productStorage = productStorage.sort((l, r) => r.date - l.date);
 
   /**
    * Prvý riadok so stĺpcami
    */
   createTableRow(['address', 'date', 'name', 'price']);
 
-  json.forEach(product => {
+  productStorage.forEach(product => {
     const newTableRow = createTableRow([
       product.address[0],
       new Date(product.date).toLocaleDateString(),
@@ -46,15 +46,15 @@ getProductsElement.addEventListener('click', async () => {
       product.price === -1 ? '' : `${product.price} €`,
     ]);
 
-    if (!product.isActive) {
+    if (product.isActive) {
+      /**
+       * Po kliknutí na riadok
+       */
+      newTableRow.addEventListener('click', () => {
+        window.open(`https://elektro.bazos.sk/inzerat/${product.id}/.php`, '_blank');
+      });
+    } else {
       newTableRow.classList.add('isNotActive');
     }
-
-    /**
-     * Po kliknutí na riadok
-     */
-    newTableRow.addEventListener('click', () => {
-      window.open(`https://elektro.bazos.sk/inzerat/${product.id}/.php`, '_blank');
-    });
   });
 });

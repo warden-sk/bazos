@@ -26,7 +26,7 @@ body {
   background-color: hsl(0, 0%, 30%);
   font-weight: 600;
 }
-#table tr:not(:first-child):hover {
+#table tr:not(.isNotActive):not(:first-child):hover {
   cursor: pointer;
   text-decoration: underline;
 }

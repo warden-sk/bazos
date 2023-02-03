@@ -8,6 +8,7 @@ import createDOM from './createDOM';
 
 export interface Product {
   address: [string, number];
+  createdAt: number;
   date: number;
   description: string;
   id: number;
@@ -57,6 +58,7 @@ async function getProducts(url: string, page: number): Promise<Product[]> {
         ...products,
         {
           address: [left, toNumber(right)],
+          createdAt: +new Date(),
           date: +new Date(+year, +month - 1, +day),
           description,
           id: toNumber(id),

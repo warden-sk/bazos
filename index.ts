@@ -8,6 +8,7 @@ import getPageCount from './getPageCount';
 import fs from 'fs';
 
 interface Update {
+  column: string;
   createdAt: number;
   from: any;
   id: number;
@@ -41,6 +42,7 @@ let updateStorage: Update[] = [];
             updateStorage = [
               ...updateStorage,
               {
+                column: columnToUpdate,
                 createdAt: +new Date(),
                 from: productStorage[i][columnToUpdate],
                 id: product.id,

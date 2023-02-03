@@ -4,7 +4,7 @@
 
 import jsdom from 'jsdom';
 
-function createDOM(html: string) {
+function createDOM(html: Buffer) {
   return new jsdom.JSDOM(html);
 }
 

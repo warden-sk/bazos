@@ -1,3 +1,7 @@
+# Server
+
+Server vytvorí [JSON súbor](./json/products.json).
+
 # Klient
 
 https://warden-sk.github.io/bazos/client/index.html

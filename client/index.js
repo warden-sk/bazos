@@ -36,16 +36,19 @@ getProductsElement.addEventListener('click', async () => {
   /**
    * Prvý riadok so stĺpcami
    */
-  createTableRow(['address', 'date', 'isActive', 'name', 'price']);
+  createTableRow(['address', 'date', 'name', 'price']);
 
   json.forEach(product => {
     const newTableRow = createTableRow([
       product.address[0],
       new Date(product.date).toLocaleDateString(),
-      product.isActive.toString(),
       product.name,
       product.price === -1 ? '' : `${product.price} €`,
     ]);
+
+    if (!product.isActive) {
+      newTableRow.classList.add('isNotActive');
+    }
 
     /**
      * Po kliknutí na riadok

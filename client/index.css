@@ -44,3 +44,8 @@ body {
   border-bottom-right-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
+/**/
+.isNotActive {
+  color: hsl(0, 100%, 50%);
+  opacity: 0.5;
+}

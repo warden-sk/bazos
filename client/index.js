@@ -29,17 +29,24 @@ getProductsElement.addEventListener('click', async () => {
   /**
    * json: Product[]
    */
-  const json = await response.json();
+  let json = await response.json();
+
+  json = json.sort((l, r) => r.date - l.date);
 
   /**
    * Prvý riadok so stĺpcami
    */
-  createTableRow(['address', 'name', 'price']);
+  createTableRow(['address', 'date', 'name', 'price']);
 
   json.forEach(product => {
     const productPrice = product.price === -1 ? '\u2014' : `${product.price} €`;
 
-    const newTableRow = createTableRow([product.address[0], product.name, productPrice]);
+    const newTableRow = createTableRow([
+      product.address[0],
+      new Date(product.date).toLocaleDateString('sk'),
+      product.name,
+      productPrice,
+    ]);
 
     /**
      * Po kliknutí na riadok

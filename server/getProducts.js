@@ -21,7 +21,7 @@ async function getProducts(url, page) {
         const AddressElement = div.querySelector('.inzeratylok');
         const DateElement = div.querySelector('.inzeratynadpis .velikost10');
         const DescriptionElement = div.querySelector('.inzeratynadpis .popis');
-        const NameElement = div.querySelector('.inzeratynadpis .nadpis')?.querySelector('a');
+        const NameElement = div.querySelector('.inzeratynadpis .nadpis a');
         const PriceElement = div.querySelector('.inzeratycena');
         if (AddressElement?.textContent &&
             DateElement?.textContent &&
@@ -46,7 +46,6 @@ async function getProducts(url, page) {
                     isActive: true,
                     name,
                     price: (0, toNumber_1.default)(price),
-                    updatedAt: -1,
                 },
             ];
         }

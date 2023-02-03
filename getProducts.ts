@@ -15,7 +15,7 @@ export interface Product {
   isActive: boolean;
   name: string;
   price: number;
-  updatedAt: number;
+  updatedAt?: number;
 }
 
 async function getProducts(url: string, page: number): Promise<Product[]> {
@@ -35,7 +35,7 @@ async function getProducts(url: string, page: number): Promise<Product[]> {
     const AddressElement = div.querySelector('.inzeratylok');
     const DateElement = div.querySelector('.inzeratynadpis .velikost10');
     const DescriptionElement = div.querySelector('.inzeratynadpis .popis');
-    const NameElement = div.querySelector('.inzeratynadpis .nadpis')?.querySelector('a');
+    const NameElement = div.querySelector('.inzeratynadpis .nadpis a') as HTMLAnchorElement;
     const PriceElement = div.querySelector('.inzeratycena');
 
     if (
@@ -66,7 +66,6 @@ async function getProducts(url: string, page: number): Promise<Product[]> {
           isActive: true,
           name,
           price: toNumber(price),
-          updatedAt: -1,
         },
       ];
     }

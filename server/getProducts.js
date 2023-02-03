@@ -6,7 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const createRequest_1 = __importDefault(require("./createRequest"));
+const createHttpsRequest_1 = __importDefault(require("./createHttpsRequest"));
 const toNumber_1 = __importDefault(require("./toNumber"));
 const createDOM_1 = __importDefault(require("./createDOM"));
 async function getProducts(url, page) {
@@ -14,8 +14,8 @@ async function getProducts(url, page) {
         url += `/${(page - 1) * 20}`;
     }
     url += `/`; // "\/$"
-    const response = await (0, createRequest_1.default)(url);
-    const { window } = (0, createDOM_1.default)(response);
+    const httpsResponse = await (0, createHttpsRequest_1.default)(url);
+    const { window } = (0, createDOM_1.default)(httpsResponse);
     let products = [];
     window.document.querySelectorAll('.inzeraty.inzeratyflex').forEach(div => {
         const AddressElement = div.querySelector('.inzeratylok');

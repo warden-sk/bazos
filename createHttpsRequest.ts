@@ -4,7 +4,7 @@
 
 import https from 'https';
 
-function createRequest(url: string): Promise<Buffer> {
+function createHttpsRequest(url: string): Promise<Buffer> {
   return new Promise($ => {
     const request = https.request(url, response => {
       let chunks: Buffer[] = [];
@@ -26,4 +26,4 @@ function createRequest(url: string): Promise<Buffer> {
   });
 }
 
-export default createRequest;
+export default createHttpsRequest;

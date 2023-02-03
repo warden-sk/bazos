@@ -2,7 +2,7 @@
  * Copyright 2023 Marek Kobida
  */
 
-import createRequest from './createRequest';
+import createHttpsRequest from './createHttpsRequest';
 import toNumber from './toNumber';
 import createDOM from './createDOM';
 
@@ -25,9 +25,9 @@ async function getProducts(url: string, page: number): Promise<Product[]> {
 
   url += `/`; // "\/$"
 
-  const response = await createRequest(url);
+  const httpsResponse = await createHttpsRequest(url);
 
-  const { window } = createDOM(response);
+  const { window } = createDOM(httpsResponse);
 
   let products: Product[] = [];
 

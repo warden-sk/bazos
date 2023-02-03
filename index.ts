@@ -44,7 +44,7 @@ import fs from 'fs';
     } else {
       console.log(`\x1b[32m${productStorage.length} product(s)\x1b[0m`);
 
-      fs.writeFileSync('./products.json', JSON.stringify(productStorage));
+      fs.writeFileSync('./json/products.json', JSON.stringify(productStorage));
     }
   }
 

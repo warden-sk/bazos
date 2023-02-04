@@ -15,10 +15,9 @@ interface Update {
   to: any;
 }
 
-let updateStorage: Update[] = [];
-
 (async () => {
   let productStorage: Product[] = JSON.parse(fs.readFileSync('./json/products.json').toString());
+  let updateStorage: Update[] = JSON.parse(fs.readFileSync('./json/updates.json').toString());
 
   productStorage = productStorage.map(product => {
     product.isActive = false;
@@ -49,6 +48,9 @@ let updateStorage: Update[] = [];
                 to: product[columnToUpdate],
               },
             ];
+
+            // @ts-ignore
+            productStorage[i][columnToUpdate] = product[columnToUpdate];
           }
         });
       } else {

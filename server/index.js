@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const getProducts_1 = __importDefault(require("./getProducts"));
 const getPageCount_1 = __importDefault(require("./getPageCount"));
 const fs_1 = __importDefault(require("fs"));
-let updateStorage = [];
 (async () => {
     let productStorage = JSON.parse(fs_1.default.readFileSync('./json/products.json').toString());
+    let updateStorage = JSON.parse(fs_1.default.readFileSync('./json/updates.json').toString());
     productStorage = productStorage.map(product => {
         product.isActive = false;
         return product;
@@ -35,6 +35,8 @@ let updateStorage = [];
                                 to: product[columnToUpdate],
                             },
                         ];
+                        // @ts-ignore
+                        productStorage[i][columnToUpdate] = product[columnToUpdate];
                     }
                 });
             }

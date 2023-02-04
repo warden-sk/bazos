@@ -8,13 +8,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 1rem;
 }
-#getProducts,
-#getUpdates {
-  margin-bottom: 1rem;
+#get {
   text-align: center;
 }
-#getProducts:hover,
-#getUpdates:hover {
+#get:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -50,4 +47,8 @@ table tr td:last-child {
 .isNotActive {
   color: hsl(0, 100%, 50%);
   opacity: 0.5;
+}
+#updates {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }

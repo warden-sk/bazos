@@ -2,8 +2,7 @@
  * Copyright 2023 Marek Kobida
  */
 
-const getProductsElement = window.document.querySelector('#getProducts');
-const getUpdatesElement = window.document.querySelector('#getUpdates');
+const getElement = window.document.querySelector('#get');
 
 const updatesElement = window.document.querySelector('#updates');
 const productsElement = window.document.querySelector('#products');
@@ -23,10 +22,7 @@ function createTableRow(table, columns) {
   return newTableRow;
 }
 
-/**
- * Po kliknutí na „Get products“
- */
-getProductsElement.addEventListener('click', async () => {
+async function getProducts() {
   const response = await fetch(
     `https://raw.githubusercontent.com/warden-sk/bazos/main/json/products.json?date=${+new Date()}`
   );
@@ -63,9 +59,9 @@ getProductsElement.addEventListener('click', async () => {
       newTableRow.classList.add('isNotActive');
     }
   });
-});
+}
 
-getUpdatesElement.addEventListener('click', async () => {
+async function getUpdates() {
   const response = await fetch(
     `https://raw.githubusercontent.com/warden-sk/bazos/main/json/updates.json?date=${+new Date()}`
   );
@@ -81,4 +77,12 @@ getUpdatesElement.addEventListener('click', async () => {
       window.open(`https://elektro.bazos.sk/inzerat/${update.productId}/.php`, '_blank');
     });
   });
+}
+
+/**
+ * Po kliknutí na „Get“
+ */
+getElement.addEventListener('click', async () => {
+  await getProducts();
+  await getUpdates();
 });

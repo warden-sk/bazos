@@ -31,7 +31,7 @@ let updateStorage = [];
                                 column: columnToUpdate,
                                 createdAt: +new Date(),
                                 from: productStorage[i][columnToUpdate],
-                                id: product.id,
+                                productId: product.id,
                                 to: product[columnToUpdate],
                             },
                         ];

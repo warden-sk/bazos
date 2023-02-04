@@ -11,7 +11,7 @@ interface Update {
   column: string;
   createdAt: number;
   from: any;
-  id: number;
+  productId: number;
   to: any;
 }
 
@@ -45,7 +45,7 @@ let updateStorage: Update[] = [];
                 column: columnToUpdate,
                 createdAt: +new Date(),
                 from: productStorage[i][columnToUpdate],
-                id: product.id,
+                productId: product.id,
                 to: product[columnToUpdate],
               },
             ];

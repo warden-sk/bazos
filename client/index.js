@@ -39,7 +39,7 @@ getProductsElement.addEventListener('click', async () => {
    */
   const updateStorage = await response2.json();
 
-  productStorage = productStorage.sort((l, r) => r.date - l.date);
+  productStorage = productStorage.sort((l, r) => r.createdAt - l.createdAt);
 
   /**
    * Prvý riadok so stĺpcami

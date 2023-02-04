@@ -3,6 +3,7 @@
  */
 
 const getProductsElement = window.document.querySelector('#getProducts');
+const getUpdatesElement = window.document.querySelector('#getUpdates');
 
 const updatesElement = window.document.querySelector('#updates');
 const productsElement = window.document.querySelector('#products');
@@ -26,34 +27,26 @@ function createTableRow(table, columns) {
  * Po kliknutí na „Get products“
  */
 getProductsElement.addEventListener('click', async () => {
-  const response1 = await fetch(
+  const response = await fetch(
     `https://raw.githubusercontent.com/warden-sk/bazos/main/json/products.json?date=${+new Date()}`
-  );
-  const response2 = await fetch(
-    `https://raw.githubusercontent.com/warden-sk/bazos/main/json/updates.json?date=${+new Date()}`
   );
 
   /**
    * productStorage: Product[]
    */
-  let productStorage = await response1.json();
-
-  /**
-   * updateStorage: Update[]
-   */
-  const updateStorage = await response2.json();
+  let productStorage = await response.json();
 
   productStorage = productStorage.sort((l, r) => r.createdAt - l.createdAt);
 
   /**
    * Prvý riadok so stĺpcami
    */
-  createTableRow(productsElement, ['address', 'date', 'name', 'price']);
-  createTableRow(updatesElement, ['column', 'from', 'productId', 'to']);
+  createTableRow(productsElement, ['address', 'createdAt', 'date', 'name', 'price']);
 
   productStorage.forEach(product => {
     const newTableRow = createTableRow(productsElement, [
       product.address[0],
+      new Date(product.createdAt).toLocaleDateString(),
       new Date(product.date).toLocaleDateString(),
       product.name,
       product.price === -1 ? '' : `${product.price} €`,
@@ -70,9 +63,19 @@ getProductsElement.addEventListener('click', async () => {
       newTableRow.classList.add('isNotActive');
     }
   });
+});
+
+getUpdatesElement.addEventListener('click', async () => {
+  const response = await fetch(
+    `https://raw.githubusercontent.com/warden-sk/bazos/main/json/updates.json?date=${+new Date()}`
+  );
+
+  const updateStorage = await response.json();
+
+  createTableRow(updatesElement, ['productId', 'column', 'from', 'to']);
 
   updateStorage.forEach(update => {
-    const newTableRow = createTableRow(updatesElement, [update.column, update.from, update.productId, update.to]);
+    const newTableRow = createTableRow(updatesElement, [update.productId, update.column, update.from, update.to]);
 
     newTableRow.addEventListener('click', () => {
       window.open(`https://elektro.bazos.sk/inzerat/${update.productId}/.php`, '_blank');

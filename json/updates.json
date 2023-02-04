@@ -1,1 +1,65 @@
-[{"column":"date","createdAt":1675512896041,"from":1675119600000,"productId":147211258,"to":1675465200000},{"column":"date","createdAt":1675512896041,"from":1675378800000,"productId":146932735,"to":1675465200000},{"column":"date","createdAt":1675512896041,"from":1675378800000,"productId":145239723,"to":1675465200000},{"column":"date","createdAt":1675512896041,"from":1675378800000,"productId":146595766,"to":1675465200000},{"column":"date","createdAt":1675512896041,"from":1675378800000,"productId":147083647,"to":1675465200000},{"column":"name","createdAt":1675512896105,"from":"TOPVISION T6","productId":147283490,"to":"LED PROJEKTOR TOPVISION T6"},{"column":"name","createdAt":1675512896230,"from":"JVC X5500 4K eShift","productId":146865981,"to":"JVC X5500 4K eShift (ZĽAVA)"},{"column":"price","createdAt":1675512896230,"from":1490,"productId":146865981,"to":1350},{"column":"price","createdAt":1675512896819,"from":555,"productId":146164479,"to":520}]
+[
+  {
+    "column": "date",
+    "createdAt": 1675512896041,
+    "from": 1675119600000,
+    "productId": 147211258,
+    "to": 1675465200000
+  },
+  {
+    "column": "date",
+    "createdAt": 1675512896041,
+    "from": 1675378800000,
+    "productId": 146932735,
+    "to": 1675465200000
+  },
+  {
+    "column": "date",
+    "createdAt": 1675512896041,
+    "from": 1675378800000,
+    "productId": 145239723,
+    "to": 1675465200000
+  },
+  {
+    "column": "date",
+    "createdAt": 1675512896041,
+    "from": 1675378800000,
+    "productId": 146595766,
+    "to": 1675465200000
+  },
+  {
+    "column": "date",
+    "createdAt": 1675512896041,
+    "from": 1675378800000,
+    "productId": 147083647,
+    "to": 1675465200000
+  },
+  {
+    "column": "name",
+    "createdAt": 1675512896105,
+    "from": "TOPVISION T6",
+    "productId": 147283490,
+    "to": "LED PROJEKTOR TOPVISION T6"
+  },
+  {
+    "column": "name",
+    "createdAt": 1675512896230,
+    "from": "JVC X5500 4K eShift",
+    "productId": 146865981,
+    "to": "JVC X5500 4K eShift (ZĽAVA)"
+  },
+  {
+    "column": "price",
+    "createdAt": 1675512896230,
+    "from": 1490,
+    "productId": 146865981,
+    "to": 1350
+  },
+  {
+    "column": "price",
+    "createdAt": 1675512896819,
+    "from": 555,
+    "productId": 146164479,
+    "to": 520
+  }
+]
